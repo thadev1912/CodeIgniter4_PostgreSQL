@@ -1,0 +1,71 @@
+<?= $this->extend('layout/main.php') ?>
+<?=  $this->section('content')   ?>
+<div class="card">
+               <div class="card-header bg-danger">
+                    <div class="row">
+                                  <div class="col-md-12" align="center">
+                                       <h1 class="btn text-light"> DANH SÁCH SINH VIÊN</h1>
+                                  </div>
+                    
+                     </div>
+</div>
+</br>
+<?php
+if(session()->getFlashdata('thongbao'))
+{
+    echo "<div class='alert alert-success'>".session()->getFlashdata('thongbao')."</div>";
+}
+elseif(session()->getFlashdata('warning'))
+{
+    echo "<div class='alert alert-success'>".session()->getFlashdata('warning')."</div>";
+}
+?>
+
+<div class="card-body">
+<div> <a href="<?= base_url('sinhvien/them') ?>" class=" btn btn-primary"><i class="fas fa-feather">&nbsp;Thêm mới</i></a> <br></div> 
+                 
+                   
+                                <table class="table table-bordered mt-2">
+                                     <thread >
+                                         </tr >
+                                           
+                                           <th style="text-align: center; vertical-align: middle;background: blue;color: white;width:250px;">MÃ SINH VIÊN</th>
+                                           <th style="text-align: center; vertical-align: middle;background: blue;color: white;width:250px;">TÊN SINH VIÊN</th>
+                                           <th style="text-align: center; vertical-align: middle;background: blue;color: white;width:250px;">GIỚI TÍNH</th>
+                                           <th style="text-align: center; vertical-align: middle;background: blue;color: white;width:250px;">ĐỊA CHỈ</th>
+                                           <th style="text-align: center; vertical-align: middle;background: blue;color: white;width:250px;">SỐ ĐIỆN THOẠI</th>
+                                           <th style="text-align: center; vertical-align: middle;background: blue;color: white;width:250px;">TÊN LỚP</th>
+                                           <th style="text-align: center; vertical-align: middle;background: blue;color: white;width:150px;">GHI CHÚ</th>
+                                           <th style="text-align: center; vertical-align: middle;background: blue;color: white;width:150px;">TÙY CHỈNH</th>
+                                          </tr>
+                                     </thread>
+                                    
+                                     <tbody>
+                                     <?php foreach ($sinhvien as $row): ?>
+                                     <tr>
+                                                                         
+                                        <td><?=$row->ma_sv ?></td>
+                                        <td><?=$row->ten_sv ?></td>       
+                                        <td><?=$row->gioitinh ?></td>
+                                        <td><?=$row->diachi ?></td>   
+                                        <td><?=$row->sdt ?></td>   
+                                        <td><?=$row->ten_lop ?></td>   
+                                        <td><?=$row->ghichu ?></td>                                           
+                                        <td  style="text-align: center; " class="td-actions">
+                        <a href="<?= base_url('sinhvien/sua/'.$row->id)?>" class="  btn"><i class="fas fa-edit" style="font-size:28px;color:blue"></i></a>
+
+                        <a href="<?= base_url('sinhvien/xoa/'.$row->id)?>" class="  btn"><i class="far fa-trash-alt" style="font-size:25px;color:red"></i></a>
+                    </td>
+                                     </tr>
+                                      <?php endforeach  ?>
+                                   
+                                    </tbody>
+                               </table>
+                            
+                 
+                 </div >   
+              </div>
+           </div>
+         </div>
+        
+         <?= $this->endSection() ?>
