@@ -29,14 +29,58 @@ class SinhvienController extends BaseController
         return view('sinhvien/themsinhvien');
     }
     public function store(){
-        $validation=$this->validate([
-            'txt_ma_sv'=>'required',
-             'txt_ten_sv'=>'required',
-             'txt_gioitinh'=>'required',
-             'txt_diachi'=>'required',
-             'txt_malop'=>'required',
-             'txt_sdt'=>'required',
-             'txt_ghichu'=>'required',
+        // $validation=$this->validate([
+        //     'txt_ma_sv'=>'required',
+        //      'txt_ten_sv'=>'required',
+        //      'txt_gioitinh'=>'required',
+        //      'txt_diachi'=>'required',
+        //      'txt_malop'=>'required',
+        //      'txt_sdt'=>'required',
+        //      'txt_ghichu'=>'required',
+        // ]);
+        $validation=$this->validate([       
+            'txt_ma_sv'=>[
+                'rules'=>'required',
+                'errors'=>[
+                    'required'=>'Mã sinh viên không được để trống',
+                ]
+                ],
+               'txt_ten_sv'=>[
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Tên sinh viên không được để trống',
+                    ]
+                    ],  
+                    'txt_gioitinh'=>[
+                        'rules'=>'required',
+                        'errors'=>[
+                            'required'=>'Giới tính không được để trống',
+                        ]
+                        ],
+                        'txt_diachi'=>[
+                            'rules'=>'required',
+                            'errors'=>[
+                                'required'=>'Địa chỉ không được để trống',
+                            ]
+                            ], 
+                            'txt_malop'=>[
+                                'rules'=>'required',
+                                'errors'=>[
+                                    'required'=>'Mã lớp không được để trống',
+                                ]
+                                ],  
+                                'txt_sdt'=>[
+                                    'rules'=>'required',
+                                    'errors'=>[
+                                        'required'=>'Số điện thoại không được để trống',
+                                    ]
+                                    ],   
+                                    'txt_ghichu'=>[
+                                        'rules'=>'required',
+                                        'errors'=>[
+                                            'required'=>'Ghi chú không được để trống',
+                                        ]
+                                        ],             
         ]);
         if(!$validation)
         {

@@ -15,7 +15,7 @@
             <div class="row"> <!--thuộc tính form-row nó giúp chia 2 cột trên 1 row của nó-->
                     <div class="col">
                         <label>Mã Sinh Viên</label>
-                        <input id="current-pass-control" name="txt_ma_sv" class="form-control" type="text" value="<?= old('txt_ma_sv');?>">
+                        <input id="current-pass-control" name="txt_ma_sv" class="form-control" type="text">
                         <span class="text-danger"> <?= isset($validation)? display_error($validation,"txt_ma_sv"):'' ?></span>
                     </div>
                     <div class="col">
