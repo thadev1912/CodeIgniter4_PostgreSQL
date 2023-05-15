@@ -11,6 +11,7 @@ class SinhvienController extends BaseController
     public function __construct()
     {
         $this->db=\Config\Database::connect();
+        helper(['url','form']);
     }
     public function index()
     {
@@ -28,6 +29,20 @@ class SinhvienController extends BaseController
         return view('sinhvien/themsinhvien');
     }
     public function store(){
+        $validation=$this->validate([
+            'txt_ma_sv'=>'required',
+             'txt_ten_sv'=>'required',
+             'txt_gioitinh'=>'required',
+             'txt_diachi'=>'required',
+             'txt_malop'=>'required',
+             'txt_sdt'=>'required',
+             'txt_ghichu'=>'required',
+        ]);
+        if(!$validation)
+        {
+           return view('sinhvien/themsinhvien',['validation'=>$this->validator]);
+           //return redirect()->back()->withInput()->with(['validation'=> $this->validator]);
+        }
         $sinhvien=new Sinhvien;
         $data=[
             'ma_sv'=>$this->request->getPost('txt_ma_sv'),
